@@ -10,6 +10,8 @@
 
 ## Technologies Used
 
+Flowbite
+
 ## Usage For Projects
 ----------------------------
 # event_Management
