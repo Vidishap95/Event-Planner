@@ -14,7 +14,6 @@ const EventForm = () => {
         eventTime: '',
         eventDate: '',
         location: ''
-
     });
 
     const [mutateEvents, { error }] = useMutation(ADD_EVENT);
