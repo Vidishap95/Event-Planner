@@ -8,27 +8,27 @@ import { useQuery } from '@apollo/client';
 const Events = () => {
     const { loading, data } = useQuery(VIEW_EVENTS);
     const events = data?.viewEvents || [];
-   
+
     return (
         <div>
-           
-            {loading ? 
-            <div> Events have not yet been fetched yet! </div>
-            : <div>
-                {events.map((event, i) => {
-                    return (
-                    <div key={i}>
-                        {event.eventName}
-                        {event.eventDescription}
-                        {event.eventDate}
-                        {event.location}
-                       
-                    </div>
-                    )
-                    
-                })}
-               </div>
-        }
+
+            {loading ?
+                <div> Events have not yet been fetched yet! </div>
+                : <div>
+                    {events.map((event, i) => {
+                        return (
+                            <div key={i}>
+                                {event.eventName}
+                                {event.eventDescription}
+                                {event.eventDate}
+                                {event.location}
+
+                            </div>
+                        )
+
+                    })}
+                </div>
+            }
         </div>
     )
 }
