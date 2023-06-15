@@ -20,7 +20,7 @@ Database of event Management
 ### Login = username,password
 ### Signin = FirstName, LastName, Email, PhoneNumber, Password, ConfirmPassword
 
-### Myevents = FirstName, MobileNumber, EmailAddress, EventName, EventDate, EventType,Event Description
+### Myprofile = FirstName, MobileNumber, EmailAddress, EventName, EventDate, EventType,Event Description
 
 # graphQL
 query = viewEvent
