@@ -1,3 +1,4 @@
 const Profile = require('./Profile');
+const Event = require("./Events");
 
-module.exports = { Profile };
+module.exports = { Profile, Event };
