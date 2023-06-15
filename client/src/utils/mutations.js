@@ -13,5 +13,3 @@ mutation mutateEvents($eventName: String!, $eventDescription: String!, $eventDat
   }
   
 `;
-
-  
