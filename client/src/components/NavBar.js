@@ -1,4 +1,5 @@
 import React from 'react'
+import FFLogo from "../assets/Fendi-Logo.png"
 
 const NavBar = () => {
     return (
@@ -7,7 +8,7 @@ const NavBar = () => {
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="#" class="flex items-center">
                     {/* // image please replace with logo */}
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+                    <img src={FFLogo} class="h-8 mr-3" alt="FF Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"> Flawless Function</span>
                 </a>
                 <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
