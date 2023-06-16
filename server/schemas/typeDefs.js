@@ -32,6 +32,7 @@ const typeDefs = gql`
     profile(profileId: ID!): Profile
     events: [Event]!
     event(eventId: ID!): Event
+    viewEvents: Event 
 
   }
 
@@ -40,7 +41,7 @@ const typeDefs = gql`
     createProfile(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
-    createEvent(
+    addEvent(
         title: String!
         description: String!
         location: String!
