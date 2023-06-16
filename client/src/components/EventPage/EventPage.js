@@ -1,5 +1,5 @@
 import React from 'react'
-import Events from '../Events'
+import Events from '../EventList/index'
 import EventForm from '../EventForm'
 
 const EventPage = () => {

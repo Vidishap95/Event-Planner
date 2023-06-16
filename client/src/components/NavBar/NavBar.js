@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import FFLogo from "../../assets/Fendi-Logo.png"
 
 const NavBar = () => {

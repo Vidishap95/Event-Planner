@@ -1,6 +1,3 @@
-import React from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink } from '@apollo/client';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import {
     ApolloClient,
@@ -9,10 +6,10 @@ import {
     createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-//import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import EventPage from "./components/EventPage";
-import NavBar from "./components/NavBar";
-import Hero from "./components/Hero";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import EventPage from "./components/EventPage/EventPage";
+import NavBar from "./components/NavBar/NavBar";
+import Hero from "./components/Hero/Hero";
 import Home from "./components/Home"
 import Footer from "./components/Footer/index"
 
@@ -43,16 +40,27 @@ const client = new ApolloClient({
 function App() {
     return (
         <ApolloProvider client={client}>
-            <div>
-                <div>
+            <Router>
+                <div className='pikachu'>
+                    {/* <Header /> */}
                     <NavBar />
                     <Hero />
-                    <Home />
-                    <EventPage />
-                </div>
-                {/* <Footer /> */}
-            </div>
+                    <div className='Pages'>
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={<Home />}
+                            />
+                            <Route
+                                path="/Events"
+                                element={<EventPage />}
+                            />
+                        </Routes>
 
+                    </div>
+                    {/* <Footer /> */}
+                </div>
+            </Router>
 
         </ApolloProvider>
 
