@@ -1,25 +1,26 @@
 # Event-Planner
 
-## Description
-Website for sharing events around your city, it will allowd you to create the event with infurmation such as: description, date, address and image to promote it.
+# Description
+Our final project for the boot camp is a website where you can share events happening in your city. It allows you to create events by adding details like description, date, address, and an image for promotion. Our goal is to connect people and communities, making it simple to discover and join local events. Whether it's a concert, workshop, or social gathering, our platform helps you reach a wider audience and promote your event effectively.
 
-## Deployed URL
+# Deployed URL
+Check the code here [link]()
 
-## GitHub Repo
+# GitHub Repo
 Check the code here [link](https://github.com/Vidishap95/Event-Planner) 
 
-## Collaborators
+# Collaborators
 * [Leo Liu](https://github.com/ALeoVerseau)
 * [Vidisha Patel](https://github.com/Vidishap95)
 * [AmalaHema Francis](https://github.com/amalahema)
 * [Paola Caceres Omana](https://github.com/paolacaceresoma)
 
-## Technologies Used
-# graphQL
+# Technologies Used
+## graphQL
 * query = viewEvent
 * mutation  = addEvent, updateEvent, DeleteEvent
 
-# Backend
+## Backend
 1. Express
 2. apollo/server
 3. jsonwebtoken(?)
@@ -27,16 +28,15 @@ Check the code here [link](https://github.com/Vidishap95/Event-Planner)
 5. mongoose
 6. bcryptClient
 
-# Client 
+## Client 
 * React
-
 1. Login (JWT)
 2. Apollo/client
 3. React-router (static ~6.11.1)
 4. context-api
 5. Flowbite
 
-# Database of event Management
+## Database of event Management
 * Login = username,password
 * Signin = FirstName, LastName, Email, PhoneNumber, Password, ConfirmPassword
 * Myprofile = FirstName, MobileNumber, EmailAddress, EventName, EventDate, EventType,Event Description
