@@ -1,8 +1,8 @@
 {
-  "name": "Event-Planner",
+  "name": "123",
   "version": "1.0.0",
   "description": "## Description",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "install": "cd server && npm i && cd ../client && npm i",
     "dev": "concurrently \"npm run client\" \"npm run server\" ",
