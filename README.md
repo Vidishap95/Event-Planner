@@ -41,3 +41,8 @@ Check the code here [link](https://github.com/Vidishap95/Event-Planner)
 * Signin = FirstName, LastName, Email, PhoneNumber, Password, ConfirmPassword
 * Myprofile = FirstName, MobileNumber, EmailAddress, EventName, EventDate, EventType,Event Description
 
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+
