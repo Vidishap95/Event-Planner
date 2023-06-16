@@ -2,7 +2,7 @@
 Our final project for the boot camp is a website where you can share events happening in your city. It allows you to create events by adding details like description, date, address, and an image for promotion. Our goal is to connect people and communities, making it simple to discover and join local events. Whether it's a concert, workshop, or social gathering, our platform helps you reach a wider audience and promote your event effectively.
 
 # Deployed URL
-Check the code here [link]()
+Heroku deploy link here [link](https://flawlessfunction.herokuapp.com/)
 
 # GitHub Repo
 Check the code here [link](https://github.com/Vidishap95/Event-Planner) 
