@@ -1,5 +1,5 @@
 import React from 'react'
-import Events from './Events'
+import EventList from './EventList'
 
 const Home = () => {
     return (
@@ -12,7 +12,7 @@ const Home = () => {
                 <div className="grid gap-4 p-4 max-w-5xl">
                     <h1> Grid layout for our events</h1>
                     <div className='block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'>
-                        <Events />
+                        <EventList />
                     </div>
                     <div className='block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'>
                         Event two

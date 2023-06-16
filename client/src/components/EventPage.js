@@ -1,11 +1,11 @@
 import React from 'react'
-import Events from './Events'
+import EventList from './EventList'
 import EventForm from './EventForm'
 
 const EventPage = () => {
     return (
         <div>EventPage
-            <Events />
+            <EventList />
             <EventForm />
         </div>
     )
