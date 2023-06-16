@@ -1,5 +1,5 @@
 import React from 'react'
-import FFLogo from "../assets/Fendi-Logo.png"
+import FFLogo from "../../assets/Fendi-Logo.png"
 
 const NavBar = () => {
     return (
