@@ -3,12 +3,13 @@
 //==================================
 import { VIEW_EVENTS } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+import dayjs from "dayjs";
 
 // Component
 const Events = () => {
     const { loading, data } = useQuery(VIEW_EVENTS);
     const events = data?.viewEvents || [];
-
+    console.log(events)
     return (
         <div>
 
@@ -20,7 +21,7 @@ const Events = () => {
                             <div key={i}>
                                 {event.eventName}
                                 {event.eventDescription}
-                                {event.eventDate}
+                                {dayjs(event.eventDate).format("MM/DD/YYYY")}
                                 {event.location}
 
                             </div>
