@@ -110,18 +110,57 @@ const { signToken } = require('../utils/auth');
 
 // module.exports = resolvers;
 
-const { User, Events } = require('../models');
+const { Profile, Event } = require('../models');
+
 const resolvers = {
   Query: {
     viewEvents: async () => {
-      return await Events.find();
+      return await Event.find();
     }
   },
   Mutation: {
     addEvent: async (_, args) => {
-      const event = await Events.create(args);
+      const event = await Event.create(args);
       return event;
+    },
+    updateEvent: async (parent, args) => {
+      try {
+        const { eventId, eventName, eventDescription, eventDate, eventTime, location } = args;
+        const updatedEvent = await Events.findByIdAndUpdate(eventId, {
+          eventName,
+          eventDescription,
+          eventDate,
+          eventTime,
+          location
+        }, { new: true });
+        return updatedEvent;
+      } catch (error) {
+        // Handle any errors
+        throw new Error('Failed to update the event.');
+      }
+    },
+    deleteEvent: async (parent, { eventId }) => {
+      try {
+        const deletedEvent = await Events.findByIdAndDelete(eventId);
+        return deletedEvent;
+      } catch (error) {
+        // Handle any errors
+        throw new Error('Failed to delete the event.');
+      }
     }
-  }
+  },
+  login: async (parent, { email, password }) => {
+    console.log(email)
+    const profile = await Profile.findOne({ email });
+    if (!profile) {
+      throw new AuthenticationError('No profile with this email found!');
+    }
+    // const correctPw = await profile.isCorrectPassword(password);
+    // if (!correctPw) {
+    //   throw new AuthenticationError('Incorrect password!');
+    // }
+    // const token = signToken(profile);
+    return { profile };
+  },
 };
 module.exports = resolvers;

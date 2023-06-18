@@ -1,13 +1,8 @@
-//================================================
-//add event to the database through the event form
-//===============================================
-import { useState } from 'react';
-
-import { useMutation } from '@apollo/client';
-import { ADD_EVENT } from '../../utils/mutations';
-
+import React, { useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_EVENT, UPDATE_EVENT, DELETE_EVENT } from '../../utils/mutations';
+import { VIEW_EVENTS } from '../../utils/queries';
 const EventForm = () => {
-
     const [eventInfo, setEventInfo] = useState({
         eventName: '',
         eventDescription: '',
@@ -15,87 +10,225 @@ const EventForm = () => {
         eventDate: '',
         location: ''
     });
-
     const [mutateEvents, { error }] = useMutation(ADD_EVENT);
-
-    const handleInputChange = async (e) => {
+    const [updateEvent] = useMutation(UPDATE_EVENT);
+    const [deleteEvent] = useMutation(DELETE_EVENT);
+    const [submittedEventInfo, setSubmittedEventInfo] = useState(null);
+    const handleInputChange = (e) => {
         const { name, value } = e.target;
-        console.log(name);
-        console.log(value);
-        console.log("Did the state update?", eventInfo)
-        //add event from the given input
         setEventInfo({ ...eventInfo, [name]: value });
-    }
-
-    //Trigger event when the user click submit button
+    };
+    const handleDateChange = (e) => {
+        const selectedDate = e.target.value;
+        setEventInfo({ ...eventInfo, eventDate: selectedDate });
+    };
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await mutateEvents({
-                variables: {
-                    ...eventInfo
-                }
-            })
-            window.location.reload();
-            console.log(data);
+            if (submittedEventInfo) {
+                // Update existing event
+                const { data } = await updateEvent({
+                    variables: {
+                        eventId: submittedEventInfo._id,
+                        ...eventInfo
+                    }
+                });
+                setSubmittedEventInfo(data.updateEvent);
+            } else {
+                // Create new event
+                const { data } = await mutateEvents({
+                    variables: {
+                        ...eventInfo
+                    }
+                });
+                setSubmittedEventInfo(data.addEvent);
+            }
         } catch (err) {
             console.log(err);
         }
-    }
-    //Design the form
+    };
+    const handleDeleteEvent = async (eventId) => {
+        try {
+            await deleteEvent({
+                variables: {
+                    eventId
+                }
+            });
+            if (submittedEventInfo?._id === eventId) {
+                setSubmittedEventInfo(null);
+                setEventInfo({
+                    eventName: '',
+                    eventDescription: '',
+                    eventTime: '',
+                    eventDate: '',
+                    location: ''
+                });
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    //   const handleUpdateEvent = (event) => {
+    //     setEventInfo(event);
+    //   };
+    const handleUpdateEvent = (event) => {
+        setSubmittedEventInfo(event);
+        setEventInfo({
+            eventName: event.eventName,
+            eventDescription: event.eventDescription,
+            eventTime: event.eventTime,
+            eventDate: event.eventDate,
+            location: event.location
+        });
+    };
+    // Fetch existing events from the database
+    const { loading, data } = useQuery(VIEW_EVENTS);
+    const events = data?.viewEvents || [];
     return (
         <section className="container">
             <div className="row bg-orange-200">
-                <form onSubmit={handleFormSubmit}>
-                    <div className="grid gap-6 mb-6 md:grid-cols-2">
+                <form onSubmit={handleFormSubmit} className="p-8 bg-cyan-100 rounded-lg shadow-md">
+                    {/* Form inputs */}
+                    <h2 className="text-5xl font-bold mb-4">Add Event</h2>
+                    {/* Form inputs */}
+                    <div className="grid grid-cols-2 gap-4">
+                        {/* Event Name */}
                         <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">eventName</label>
-                            <input type="text" id="eventName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter event name"
+                            <label htmlFor="eventName" className="block text-2xl font-medium text-gray-700 mb-1">
+                                Event Name
+                            </label>
+                            <input
+                                type="text"
+                                id="eventName"
+                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-xl px-3 py-2"
+                                placeholder="Enter event name"
                                 name="eventName"
                                 value={eventInfo.eventName}
                                 onChange={handleInputChange}
-                                required />
+                                required
+                            />
                         </div>
+                        {/* Event Description */}
                         <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">eventDescription</label>
-                            <input type="text" id="eventDescription" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter event description"
+                            <label htmlFor="eventDescription" className="block text-2xl font-medium text-gray-700 mb-1">
+                                Event Description
+                            </label>
+                            <input
+                                type="text"
+                                id="eventDescription"
+                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg px-3 py-2"
+                                placeholder="Enter event description"
                                 name="eventDescription"
                                 value={eventInfo.eventDescription}
                                 onChange={handleInputChange}
-                                required />
+                                required
+                            />
                         </div>
+                        {/* Event Date */}
                         <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">EventDate</label>
-                            <input type="text" id="eventDate" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter event date"
+                            <label htmlFor="eventDate" className="block text-2xl font-medium text-gray-700 mb-1">
+                                Event Date
+                            </label>
+                            <input
+                                type="date"
+                                id="eventDate"
+                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg px-3 py-2"
+                                placeholder="Select event date"
                                 name="eventDate"
-                                value={eventInfo.eventDate}
-                                onChange={handleInputChange}
-                                required />
+                                value={eventInfo.eventDate || ""}
+                                onChange={handleDateChange}
+                                required
+                            />
                         </div>
+                        {/* Event Time */}
                         <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">EventTime</label>
-                            <input type="text" id="eventTime" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter event time"
+                            <label htmlFor="eventTime" className="block text-2xl font-medium text-gray-700 mb-1">
+                                Event Time
+                            </label>
+                            <input
+                                type="text"
+                                id="eventTime"
+                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg px-3 py-2"
+                                placeholder="Enter event time"
                                 name="eventTime"
                                 value={eventInfo.eventTime}
                                 onChange={handleInputChange}
-                                required />
+                                required
+                            />
                         </div>
+                        {/* Location */}
                         <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">location</label>
-                            <input type="text" id="location" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="event location"
+                            <label htmlFor="location" className="block text-2xl font-medium text-gray-700 mb-1">
+                                Location
+                            </label>
+                            <input
+                                type="text"
+                                id="location"
+                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg px-3 py-2"
+                                placeholder="Enter event location"
                                 name="location"
                                 value={eventInfo.location}
                                 onChange={handleInputChange}
-                                required />
+                                required
+                            />
                         </div>
-
-                        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </div>
+                    {/* Form submission */}
+                    <div className="flex justify-center mt-4">
+                        <button
+                            type="submit"
+                            className="bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-lg px-6 py-3"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                    {/* Rest of the form code */}
                 </form>
+                {/* Display existing events */}
+                <div className="mt-8 bg-cyan-100">
+                    <h2 className="text-3xl font-bold mb-4">Existing Events</h2>
+                    {loading ? (
+                        <div>Loading events...</div>
+                    ) : (
+                        <div>
+                            {events.map((event) => (
+                                <div key={event._id} className="bg-white rounded-lg shadow-md p-4 mb-4">
+                                    <p>
+                                        <strong>Event Name:</strong> {event.eventName}
+                                    </p>
+                                    <p>
+                                        <strong>Event Description:</strong> {event.eventDescription}
+                                    </p>
+                                    <p>
+                                        <strong>Event Date:</strong> {event.eventDate}
+                                    </p>
+                                    <p>
+                                        <strong>Event Time:</strong> {event.eventTime}
+                                    </p>
+                                    <p>
+                                        <strong>Location:</strong> {event.location}
+                                    </p>
+                                    <div className="flex justify-center mt-4">
+                                        <button
+                                            onClick={() => handleUpdateEvent(event)}
+                                            className="bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 text-white font-medium rounded-lg text-lg px-6 py-3"
+                                        >
+                                            Update Event
+                                        </button>
+                                        <button
+                                            onClick={() => handleDeleteEvent(event._id)}
+                                            className="bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 text-white font-medium rounded-lg text-lg px-6 py-3 ml-4"
+                                        >
+                                            Delete Event
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
         </section>
     );
 };
-
-
 export default EventForm;

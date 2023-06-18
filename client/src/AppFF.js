@@ -10,8 +10,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EventPage from "./components/EventPage/EventPage";
 import NavBar from "./components/NavBar/NavBar";
 import Hero from "./components/Hero/Hero";
-import Home from "./components/Home"
+import Home from "./pages/Home"
+import Header from './components/Header';
 import Footer from "./components/Footer/index"
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 //import { setContext } from '@apollo/client/link/context';
 
@@ -42,9 +45,9 @@ function App() {
         <ApolloProvider client={client}>
             <Router>
                 <div className='pikachu'>
-                    {/* <Header /> */}
                     <NavBar />
                     <Hero />
+                    <Header />
                     <div className='Pages'>
                         <Routes>
                             <Route
@@ -55,10 +58,18 @@ function App() {
                                 path="/Events"
                                 element={<EventPage />}
                             />
+                            <Route
+                                path="/Login"
+                                element={<Login />}
+                            />
+                            <Route
+                                path='/SignUp'
+                                element={<Signup />}
+                            />
                         </Routes>
 
                     </div>
-                    {/* <Footer /> */}
+                    <Footer />
                 </div>
             </Router>
 

@@ -67,9 +67,9 @@
 // module.exports = typeDefs;
 
 const { gql } = require('apollo-server-express');
-const Events = require('../models/Events');
+const Event = require('../models');
 const typeDefs = gql`
-    type Events {
+    type Event {
         _id: ID
         eventName: String
         eventDescription: String
@@ -77,11 +77,36 @@ const typeDefs = gql`
         eventTime: String
         location: String
     }
+    type Profile {
+            _id: ID
+        name: String
+        email: String
+        # There is now a field to store the user's password
+        password: String
+        events: [Event]
+        }
     type Query {
-        viewEvents: [Events]
+        viewEvents: [Event]
     }
+    type Auth {
+        token: ID!
+        profile: Profile
+        events: [Event]!
+        event(id: ID!): Event
+        }
     type Mutation {
-        addEvent(eventName: String!, eventDescription: String!, eventDate: String!, eventTime: String!, location: String!): Events
+        addEvent(eventName: String!, eventDescription: String!, eventDate: String!, eventTime: String!, location: String!): Event
+        addProfile(name: String!, email: String!, password: String!): Auth
+        login(email: String!, password: String!): Auth
+        updateEvent(
+            eventId: ID!
+            eventName: String
+            eventDescription: String
+            eventDate: String
+            eventTime: String
+            location: String
+        ): Events
+        deleteEvent(eventId: ID!): Events
     }
 `;
 module.exports = typeDefs;
