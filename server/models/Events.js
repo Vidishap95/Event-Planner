@@ -14,7 +14,7 @@ const eventSchema = new Schema({
         trim: true
     },
     eventDate: {
-        type: Date,   // Changed the data type to Date
+        type: String,   // Changed the data type to Date
         required: true,
     },
     eventTime: {

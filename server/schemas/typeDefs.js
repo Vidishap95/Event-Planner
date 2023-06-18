@@ -91,8 +91,6 @@ const typeDefs = gql`
     type Auth {
         token: ID!
         profile: Profile
-        events: [Event]!
-        event(id: ID!): Event
         }
     type Mutation {
         addEvent(eventName: String!, eventDescription: String!, eventDate: String!, eventTime: String!, location: String!): Event
@@ -105,8 +103,8 @@ const typeDefs = gql`
             eventDate: String
             eventTime: String
             location: String
-        ): Events
-        deleteEvent(eventId: ID!): Events
+        ): Event
+        deleteEvent(eventId: ID!): Event
     }
 `;
 module.exports = typeDefs;

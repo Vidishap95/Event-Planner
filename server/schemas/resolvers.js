@@ -120,13 +120,14 @@ const resolvers = {
   },
   Mutation: {
     addEvent: async (_, args) => {
+      console.log(args)
       const event = await Event.create(args);
       return event;
     },
     updateEvent: async (parent, args) => {
       try {
         const { eventId, eventName, eventDescription, eventDate, eventTime, location } = args;
-        const updatedEvent = await Events.findByIdAndUpdate(eventId, {
+        const updatedEvent = await Event.findByIdAndUpdate(eventId, {
           eventName,
           eventDescription,
           eventDate,
@@ -141,26 +142,26 @@ const resolvers = {
     },
     deleteEvent: async (parent, { eventId }) => {
       try {
-        const deletedEvent = await Events.findByIdAndDelete(eventId);
+        const deletedEvent = await Event.findByIdAndDelete(eventId);
         return deletedEvent;
       } catch (error) {
         // Handle any errors
         throw new Error('Failed to delete the event.');
       }
-    }
-  },
-  login: async (parent, { email, password }) => {
-    console.log(email)
-    const profile = await Profile.findOne({ email });
-    if (!profile) {
-      throw new AuthenticationError('No profile with this email found!');
-    }
-    // const correctPw = await profile.isCorrectPassword(password);
-    // if (!correctPw) {
-    //   throw new AuthenticationError('Incorrect password!');
-    // }
-    // const token = signToken(profile);
-    return { profile };
+    },
+    login: async (parent, { email, password }) => {
+      console.log(email)
+      const profile = await Profile.findOne({ email });
+      if (!profile) {
+        throw new AuthenticationError('No profile with this email found!');
+      }
+      const correctPw = await profile.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password!');
+      }
+      const token = signToken(profile);
+      return { token, profile };
+    },
   },
 };
 module.exports = resolvers;

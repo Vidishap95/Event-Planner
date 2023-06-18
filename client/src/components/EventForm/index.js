@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_EVENT, UPDATE_EVENT, DELETE_EVENT } from '../../utils/mutations';
 import { VIEW_EVENTS } from '../../utils/queries';
+import dayjs from "dayjs";
+
 const EventForm = () => {
     const [eventInfo, setEventInfo] = useState({
         eventName: '',
@@ -27,6 +29,7 @@ const EventForm = () => {
         try {
             if (submittedEventInfo) {
                 // Update existing event
+                console.log(eventInfo);
                 const { data } = await updateEvent({
                     variables: {
                         eventId: submittedEventInfo._id,
@@ -191,6 +194,7 @@ const EventForm = () => {
                         <div>Loading events...</div>
                     ) : (
                         <div>
+                            {console.log(events)}
                             {events.map((event) => (
                                 <div key={event._id} className="bg-white rounded-lg shadow-md p-4 mb-4">
                                     <p>
