@@ -15,7 +15,7 @@ import Header from './components/Header';
 import Footer from "./components/Footer/index"
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-// import Profile from "./pages/Profile"
+import Profile from "./pages/Profile"
 
 
 const httpLink = createHttpLink({
@@ -68,7 +68,7 @@ function App() {
                             />
                             <Route
                                 path='/Profile'
-                            // element={<Profile />}
+                                element={<Profile />}
                             />
                         </Routes>
 
