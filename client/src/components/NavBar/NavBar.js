@@ -5,12 +5,11 @@ import FFLogo from "../../assets/Fendi-Logo.png"
 const NavBar = () => {
     return (
 
-        <nav className="bg-transparent border-gray-200">
+        <nav className="bg-transparent">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to="/" className="flex flex-wrap items-center">
-                    {/* // image please replace with logo */}
                     <img src={FFLogo} className="h-8 mr-3" alt="FF Logo" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap"> Flawless Function</span>
+                    <span className="self-center lg:text-3xl font-semibold whitespace-nowrap sm:text-sm text-yellow-100"> Flawless Function</span>
                 </Link>
                 <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
                     <span className="sr-only">Open main menu</span>

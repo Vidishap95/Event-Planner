@@ -88,9 +88,9 @@ const EventForm = () => {
     const { loading, data } = useQuery(VIEW_EVENTS);
     const events = data?.viewEvents || [];
     return (
-        <section className="container ">
-            <div className="row bg-orange-200">
-                <form onSubmit={handleFormSubmit} className="p-8 bg-cyan-100 rounded-lg shadow-md">
+        <section className="flex justify-center min-h-full container mx-auto">
+            <div className=" bg-yellow-100">
+                <form onSubmit={handleFormSubmit} className="p-8 bg-yellow-700 rounded-lg shadow-md">
                     {/* Form inputs */}
                     <h2 className="text-5xl font-bold mb-4">Add Event</h2>
                     {/* Form inputs */}
@@ -180,7 +180,7 @@ const EventForm = () => {
                     <div className="flex justify-center mt-4">
                         <button
                             type="submit"
-                            className="bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-lg px-6 py-3"
+                            className="bg-amber-950 hover:bg-yellow-100 hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-lg px-6 py-3"
                         >
                             Submit
                         </button>
@@ -188,7 +188,7 @@ const EventForm = () => {
                     {/* Rest of the form code */}
                 </form>
                 {/* Display existing events */}
-                <div className="mt-8 bg-cyan-100">
+                <div className="mt-8 bg-yellow-700">
                     <h2 className="text-3xl font-bold mb-4">Existing Events</h2>
                     {loading ? (
                         <div>Loading events...</div>
