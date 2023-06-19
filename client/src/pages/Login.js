@@ -49,7 +49,7 @@ const Login = (props) => {
               <h1 class="text-xl font-bold leading-tight tracking-tight text-yellow-100 md:text-2xl">
                 Sign in to your account
               </h1>
-              <form className="space-y-4 md:space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 {data ? (
                   <p>
                     Success! You may now head{' '}
@@ -94,7 +94,7 @@ const Login = (props) => {
                     {error.message}
                   </div>
                 )}
-              </form>
+              </div>
             </div>
           </div>
         </div>
