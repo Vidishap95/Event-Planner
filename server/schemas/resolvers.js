@@ -169,14 +169,19 @@ const resolvers = {
       });
       return { token, profile };
     },
-    signup: async (parent, { username, email, password }) => {
-      const profile = await Profile.create({ username, email, password });
-      const token = signToken({
-        _id: profile._id,
-        email: profile.email,
-        username: profile.username,
-      });
-      return { token, profile };
+    signup: async (parent, { name, email, password }) => {
+      try {
+        const profile = await Profile.create({ name, email, password });
+        const token = signToken({
+          _id: profile._id,
+          email: profile.email,
+          name: profile.name,
+        });
+        return { token, profile };
+      } catch (err) {
+        console.log(err)
+        return {}
+      }
     },
   },
 };

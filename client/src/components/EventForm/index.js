@@ -12,9 +12,15 @@ const EventForm = () => {
         eventDate: '',
         location: ''
     });
-    const [mutateEvents, { error }] = useMutation(ADD_EVENT);
-    const [updateEvent] = useMutation(UPDATE_EVENT);
-    const [deleteEvent] = useMutation(DELETE_EVENT);
+    const [mutateEvents, { error }] = useMutation(ADD_EVENT, {
+        refetchQueries: [VIEW_EVENTS]
+    });
+    const [updateEvent] = useMutation(UPDATE_EVENT, {
+        refetchQueries: [VIEW_EVENTS]
+    });
+    const [deleteEvent] = useMutation(DELETE_EVENT, {
+        refetchQueries: [VIEW_EVENTS]
+    });
     const [submittedEventInfo, setSubmittedEventInfo] = useState(null);
     const handleInputChange = (e) => {
         const { name, value } = e.target;

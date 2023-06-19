@@ -15,12 +15,13 @@ mutation mutateEvents($eventName: String!, $eventDescription: String!, $eventDat
 `;
 
 export const LOGIN_USER = gql`
-mutation login($username: String!, $email: String!, $password: String!) {
-  login(username: $username, email: $email, password: $password) {
-    user{
+mutation login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    profile{
       _id
       username
     }
+    token
   }
 }
 `
@@ -63,5 +64,16 @@ query getEvent($eventId: ID!) {
 export const ADD_PROFILE = gql`
 mutation profile($username: String!, $email: String!, $password: String!) {
   profile
+}
+`
+export const SIGN_UP = gql`
+mutation signUp($name: String!, $email: String!, $password: String!) {
+  signup(name: $name, email: $email, password: $password) {
+    profile {
+      _id
+      email
+    }
+    token
+  }
 }
 `
