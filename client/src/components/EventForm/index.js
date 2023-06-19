@@ -88,7 +88,7 @@ const EventForm = () => {
     const { loading, data } = useQuery(VIEW_EVENTS);
     const events = data?.viewEvents || [];
     return (
-        <section className="container">
+        <section className="container ">
             <div className="row bg-orange-200">
                 <form onSubmit={handleFormSubmit} className="p-8 bg-cyan-100 rounded-lg shadow-md">
                     {/* Form inputs */}

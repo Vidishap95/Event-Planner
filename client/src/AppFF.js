@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import {
     ApolloClient,
     InMemoryCache,
@@ -15,6 +15,7 @@ import Header from './components/Header';
 import Footer from "./components/Footer/index"
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+// import Profile from "./pages/Profile"
 
 //import { setContext } from '@apollo/client/link/context';
 
@@ -65,6 +66,10 @@ function App() {
                             <Route
                                 path='/SignUp'
                                 element={<Signup />}
+                            />
+                            <Route
+                                path='/Profile'
+                            // element={<Profile />}
                             />
                         </Routes>
 
