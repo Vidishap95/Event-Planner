@@ -41,12 +41,12 @@ const Login = (props) => {
   };
 
   return (
-    <section className='bg-gray-50'>
+    <section className='bg-transparent'>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+        <div className="w-full bg-yellow-950 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <div className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-              <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+            <div className="text-xl font-bold leading-tight tracking-tight text-yellow-100 md:text-2xl">
+              <h1 class="text-xl font-bold leading-tight tracking-tight text-yellow-100 md:text-2xl">
                 Sign in to your account
               </h1>
               <form className="space-y-4 md:space-y-6">
@@ -57,7 +57,7 @@ const Login = (props) => {
                   </p>
                 ) : (
                   <form onSubmit={handleFormSubmit}>
-                    <label className='block mb-2 text-sm font-medium text-gray-900'>
+                    <label className='block mb-2 text-sm font-medium text-yellow-100'>
                       Your Email
                     </label>
                     <input
@@ -68,7 +68,7 @@ const Login = (props) => {
                       value={formState.email}
                       onChange={handleChange}
                     />
-                    <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                    <label className='block mb-2 text-sm font-medium text-yellow-100'>
                       Your Password
                     </label>
                     <input
@@ -80,7 +80,7 @@ const Login = (props) => {
                       onChange={handleChange}
                     />
                     <button
-                      className="btn btn-block btn-info w-full text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                      className="btn btn-block btn-info w-full text-yellow-100 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                       style={{ cursor: 'pointer' }}
                       type="submit"
                     >
