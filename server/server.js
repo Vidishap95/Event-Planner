@@ -1,5 +1,8 @@
 const express = require("express");
 const path = require("path");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const { User } = require('./models');
 // Apollo-server-express (deprecates in Oct 2023 to @apollo/server. Keep in mind!)
 const { ApolloServer } = require('apollo-server-express');
 

@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
+
 // const resolvers = {
 //   Query: {
 //     profiles: async () => {
@@ -118,6 +119,7 @@ const resolvers = {
       return await Event.find();
     }
   },
+
   Mutation: {
     addEvent: async (_, args) => {
       console.log(args)
@@ -159,7 +161,21 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError('Incorrect password!');
       }
-      const token = signToken(profile);
+      // Signing the JWT token
+      const token = signToken({
+        _id: profile._id,
+        email: profile.email,
+        username: profile.username
+      });
+      return { token, profile };
+    },
+    signup: async (parent, { username, email, password }) => {
+      const profile = await Profile.create({ username, email, password });
+      const token = signToken({
+        _id: profile._id,
+        email: profile.email,
+        username: profile.username
+      });
       return { token, profile };
     },
   },
