@@ -33,7 +33,7 @@ const NavBar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/SignUp" className="block py-2 pl-3 pr-4 text-yellow-100 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
+                            <Link to="/SignUp" className="block py-2 pl-3 pr-4 text-yellow-100 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-950 md:p-0">
                                 {/* <svg className="mr-2 -ml-1 w-5 h-5" viewBox="0 0 20 20" ></svg> */}
                                 Sign Up!
                             </Link>

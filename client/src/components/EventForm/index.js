@@ -89,21 +89,21 @@ const EventForm = () => {
     const events = data?.viewEvents || [];
     return (
         <section className="flex justify-center min-h-full container mx-auto">
-            <div className=" bg-yellow-100">
-                <form onSubmit={handleFormSubmit} className="p-8 bg-yellow-700 rounded-lg shadow-md">
-                    {/* Form inputs */}
-                    <h2 className="text-5xl font-bold mb-4">Add Event</h2>
+            <div className="container">
+                <form onSubmit={handleFormSubmit} className="p-8 bg-yellow-950 rounded-lg shadow-md">
+                    {/* container title */}
+                    <h2 className="text-5xl text-yellow-100 font-bold mb-4">Add Event</h2>
                     {/* Form inputs */}
                     <div className="grid grid-cols-2 gap-4">
                         {/* Event Name */}
                         <div>
-                            <label htmlFor="eventName" className="block text-2xl font-medium text-gray-700 mb-1">
+                            <label htmlFor="eventName" className="block text-2xl font-medium text-yellow-100 mb-1">
                                 Event Name
                             </label>
                             <input
                                 type="text"
                                 id="eventName"
-                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-xl px-3 py-2"
+                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-yellow-100 focus:border-yellow-100 text-xl px-3 py-2"
                                 placeholder="Enter event name"
                                 name="eventName"
                                 value={eventInfo.eventName}
@@ -113,13 +113,13 @@ const EventForm = () => {
                         </div>
                         {/* Event Description */}
                         <div>
-                            <label htmlFor="eventDescription" className="block text-2xl font-medium text-gray-700 mb-1">
+                            <label htmlFor="eventDescription" className="block text-2xl font-medium text-yellow-100 mb-1">
                                 Event Description
                             </label>
                             <input
                                 type="text"
                                 id="eventDescription"
-                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg px-3 py-2"
+                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-yellow-100 focus:border-yellow-100 text-lg px-3 py-2"
                                 placeholder="Enter event description"
                                 name="eventDescription"
                                 value={eventInfo.eventDescription}
@@ -129,13 +129,13 @@ const EventForm = () => {
                         </div>
                         {/* Event Date */}
                         <div>
-                            <label htmlFor="eventDate" className="block text-2xl font-medium text-gray-700 mb-1">
+                            <label htmlFor="eventDate" className="block text-2xl font-medium text-yellow-100 mb-1">
                                 Event Date
                             </label>
                             <input
                                 type="date"
                                 id="eventDate"
-                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg px-3 py-2"
+                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-yellow-100 focus:border-yellow-100 text-lg px-3 py-2"
                                 placeholder="Select event date"
                                 name="eventDate"
                                 value={eventInfo.eventDate || ""}
@@ -145,13 +145,13 @@ const EventForm = () => {
                         </div>
                         {/* Event Time */}
                         <div>
-                            <label htmlFor="eventTime" className="block text-2xl font-medium text-gray-700 mb-1">
+                            <label htmlFor="eventTime" className="block text-2xl font-medium text-yellow-100 mb-1">
                                 Event Time
                             </label>
                             <input
                                 type="text"
                                 id="eventTime"
-                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg px-3 py-2"
+                                className="mt-1 block w-full rounded-md shadow-sm focus:ring-yellow-100 focus:border-yellow-100 text-lg px-3 py-2"
                                 placeholder="Enter event time"
                                 name="eventTime"
                                 value={eventInfo.eventTime}
@@ -161,13 +161,13 @@ const EventForm = () => {
                         </div>
                         {/* Location */}
                         <div>
-                            <label htmlFor="location" className="block text-2xl font-medium text-gray-700 mb-1">
+                            <label htmlFor="location" className="block text-2xl font-medium text-yellow-100 mb-1">
                                 Location
                             </label>
                             <input
                                 type="text"
                                 id="location"
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg px-3 py-2"
+                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-100 focus:border-yellow-100 text-lg px-3 py-2"
                                 placeholder="Enter event location"
                                 name="location"
                                 value={eventInfo.location}
@@ -180,7 +180,7 @@ const EventForm = () => {
                     <div className="flex justify-center mt-4">
                         <button
                             type="submit"
-                            className="bg-amber-950 hover:bg-yellow-100 hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-lg px-6 py-3"
+                            className="bg-yellow-700 hover:bg-yellow-100 hover:text-black focus:ring-4 focus:outline-none focus:bg-yellow-100 text-white font-medium rounded-lg text-lg px-6 py-3"
                         >
                             Submit
                         </button>
@@ -188,15 +188,15 @@ const EventForm = () => {
                     {/* Rest of the form code */}
                 </form>
                 {/* Display existing events */}
-                <div className="mt-8 bg-yellow-700">
-                    <h2 className="text-3xl font-bold mb-4">Existing Events</h2>
+                <div className="mt-8 bg-yellow-950 rounded-lg shadow-md">
+                    <h2 className="text-2xl font-bold mb-4 p-4 text-yellow-100">Existing Events</h2>
                     {loading ? (
                         <div>Loading events...</div>
                     ) : (
                         <div>
                             {console.log(events)}
                             {events.map((event) => (
-                                <div key={event._id} className="bg-white rounded-lg shadow-md p-4 mb-4">
+                                <div key={event._id} className="bg-yellow-50 rounded-lg shadow-md p-7 mb-4">
                                     <p>
                                         <strong>Event Name:</strong> {event.eventName}
                                     </p>
@@ -215,13 +215,13 @@ const EventForm = () => {
                                     <div className="flex justify-center mt-4">
                                         <button
                                             onClick={() => handleUpdateEvent(event)}
-                                            className="bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 text-white font-medium rounded-lg text-lg px-6 py-3"
+                                            className="bg-yellow-700 hover:bg-yellow-950 focus:ring-4 focus:outline-none text-white font-medium rounded-lg text-lg px-6 py-3"
                                         >
                                             Update Event
                                         </button>
                                         <button
                                             onClick={() => handleDeleteEvent(event._id)}
-                                            className="bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 text-white font-medium rounded-lg text-lg px-6 py-3 ml-4"
+                                            className="bg-yellow-700 hover:bg-yellow-950 focus:ring-4 focus:outline-none focus:ring-red-300 text-white font-medium rounded-lg text-lg px-6 py-3 ml-4"
                                         >
                                             Delete Event
                                         </button>
