@@ -79,7 +79,7 @@ const typeDefs = gql`
     }
     type Profile {
             _id: ID
-        name: String
+        username: String
         email: String
         # There is now a field to store the user's password
         password: String

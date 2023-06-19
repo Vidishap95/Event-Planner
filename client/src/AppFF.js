@@ -17,7 +17,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 // import Profile from "./pages/Profile"
 
-//import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -45,7 +44,7 @@ function App() {
     return (
         <ApolloProvider client={client}>
             <Router>
-                <div className='pikachu'>
+                <div className='bg-yellow-600'>
                     <NavBar />
                     <Hero />
                     <Header />

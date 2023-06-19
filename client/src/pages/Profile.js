@@ -50,7 +50,6 @@ const Profile = () => {
 
       {profile.skills?.length > 0 && (
         <EventList
-          skills={profile.skills}
           isLoggedInUser={!profileId && true}
         />
       )}

@@ -174,7 +174,7 @@ const resolvers = {
       const token = signToken({
         _id: profile._id,
         email: profile.email,
-        username: profile.username
+        username: profile.username,
       });
       return { token, profile };
     },
