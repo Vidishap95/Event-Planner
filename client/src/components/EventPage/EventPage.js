@@ -4,8 +4,7 @@ import EventForm from '../EventForm'
 
 const EventPage = () => {
     return (
-        <div>EventPage
-            <Events />
+        <div>
             <EventForm />
         </div>
     )
