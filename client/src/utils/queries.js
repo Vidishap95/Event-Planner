@@ -11,4 +11,23 @@ query ViewEvents {
     location
   }
 }
+`;
+
+export const VIEW_PROFILE = gql`
+query ViewProfile {
+  viewProfile {
+    _id
+    name
+    email
+    password
+    event {
+      _id
+      eventName
+      eventDate
+      eventDescription
+      eventTime
+      location
+    }
+  }
+}
 `

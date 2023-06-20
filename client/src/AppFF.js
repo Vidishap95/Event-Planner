@@ -9,13 +9,14 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EventPage from "./components/EventPage/EventPage";
 import NavBar from "./components/NavBar/NavBar";
-import Hero from "./components/Hero/Hero";
+// import Hero from "./components/Hero/Hero";
 import Home from "./pages/Home"
 import Header from './components/Header';
 import Footer from "./components/Footer/index"
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from "./pages/Profile"
+import Shopping from './components/Shopping';
 
 
 const httpLink = createHttpLink({
@@ -44,9 +45,9 @@ function App() {
     return (
         <ApolloProvider client={client}>
             <Router>
-                <div className='bg-yellow-600'>
+                <div className='bg-yellow-700 h-screen'>
                     <NavBar />
-                    <Hero />
+                    {/* <Hero /> */}
                     <Header />
                     <div className='Pages'>
                         <Routes>
@@ -69,6 +70,10 @@ function App() {
                             <Route
                                 path='/Profile'
                                 element={<Profile />}
+                            />
+                            <Route
+                                path='/Shopping'
+                                element={<Shopping />}
                             />
                         </Routes>
 

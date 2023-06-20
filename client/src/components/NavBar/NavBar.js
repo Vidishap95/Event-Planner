@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import FFLogo from "../../assets/Fendi-Logo.png"
+import auth from '../../utils/auth'
 
 const NavBar = () => {
     return (
 
         <nav className="bg-transparent">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <Link to="/" className="flex flex-wrap items-center">
+                <Link to="/Shopping" className="flex flex-wrap items-center">
                     <img src={FFLogo} className="h-8 mr-3" alt="FF Logo" />
                     <span className="self-center lg:text-3xl font-semibold whitespace-nowrap sm:text-sm text-yellow-100"> Flawless Function</span>
                 </Link>
@@ -37,6 +38,11 @@ const NavBar = () => {
                                 {/* <svg className="mr-2 -ml-1 w-5 h-5" viewBox="0 0 20 20" ></svg> */}
                                 Sign Up!
                             </Link>
+                        </li>
+                        <li>
+                            <button className="block py-2 pl-3 pr-4 text-yellow-100 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-950 md:p-0" onClick={auth.logout}>
+                                Log Out
+                            </button>
                         </li>
                     </ul>
                 </div>
