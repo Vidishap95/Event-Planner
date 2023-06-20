@@ -21,7 +21,7 @@ Check the code here [link](https://github.com/Vidishap95/Event-Planner)
 ## Backend
 1. Express
 2. apollo/server
-3. jsonwebtoken(?)
+3. jsonwebtoken
 4. graphql
 5. mongoose
 6. bcryptClient
@@ -35,9 +35,10 @@ Check the code here [link](https://github.com/Vidishap95/Event-Planner)
 5. Flowbite
 
 ## Database of event Management
-* Login = username,password
-* Signin = FirstName, LastName, Email, PhoneNumber, Password, ConfirmPassword
-* Myprofile = FirstName, MobileNumber, EmailAddress, EventName, EventDate, EventType,Event Description
+* Login = Username, Password
+* Sign In = Name, Email, Password,
+* My Profile = Name, Email, 
+* Event = Event Name, Event Date, Event Description, Event Time
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

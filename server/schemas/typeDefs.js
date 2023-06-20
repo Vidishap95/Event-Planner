@@ -11,15 +11,18 @@ const typeDefs = gql`
     }
     type Profile {
             _id: ID
-        username: String
+        name: String
         email: String
         # There is now a field to store the user's password
         password: String
-        events: [Event]
+        event: [Event]
         }
     type Query {
         viewEvents: [Event]
     }
+    type Query {
+        viewProfile: Profile
+    }    
     type Auth {
         token: ID!
         profile: Profile
